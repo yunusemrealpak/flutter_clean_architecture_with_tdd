@@ -1,0 +1,5 @@
+# flow.yaml
+
+appId: com.byusneus.cleanArchitecture
+---
+- launchApp
