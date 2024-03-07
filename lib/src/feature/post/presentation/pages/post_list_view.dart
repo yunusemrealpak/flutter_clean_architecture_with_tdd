@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_clean_architecture/src/core/extensions/dartz_extensions.dart';
-import 'package:flutter_clean_architecture/src/feature/post/domain/repositories/post_repository.dart';
+import 'package:flutter_clean_architecture/src/feature/post/domain/usecases/get_by_id.dart';
+import 'package:flutter_clean_architecture/src/feature/post/domain/usecases/get_saved_all_posts.dart';
 
 import '../../../../injectable/injection_container.dart';
 
@@ -12,21 +13,18 @@ class PostListView extends StatefulWidget {
 }
 
 class _PostListViewState extends State<PostListView> {
-  late PostRepository postRepository;
-
   int postCount = 0;
 
   @override
   void initState() {
     super.initState();
-    postRepository = di<PostRepository>();
 
-    //getPosts();
-    getPostById(-1);
+    getPosts();
+    //getPostById(-1);
   }
 
   Future<void> getPosts() async {
-    final posts = await postRepository.getAll();
+    final posts = await di<GetSavedAllPosts>().call();
     if (posts.isLeft()) {
       return;
     }
@@ -34,7 +32,7 @@ class _PostListViewState extends State<PostListView> {
   }
 
   Future<void> getPostById(int id) async {
-    final post = await postRepository.getById(id);
+    final post = await di<GetById>().call(id);
     if (post.isLeft()) {
       updatePostCount(-1);
       return;

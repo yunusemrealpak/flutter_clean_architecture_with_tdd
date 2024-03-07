@@ -2,6 +2,7 @@ import 'package:dio/dio.dart';
 import 'package:flutter_clean_architecture/src/common/error/failure.dart';
 import 'package:flutter_clean_architecture/src/common/utils/typedef.dart';
 import 'package:flutter_clean_architecture/src/core/extensions/dartz_extensions.dart';
+import 'package:flutter_clean_architecture/src/feature/post/data/data_sources/local/post_local_data_source.dart';
 import 'package:flutter_clean_architecture/src/feature/post/data/data_sources/remote/post_remote_data_source.dart';
 import 'package:flutter_clean_architecture/src/feature/post/data/model/post_model.dart';
 import 'package:flutter_clean_architecture/src/feature/post/data/repositories/post_repository_impl.dart';
@@ -9,15 +10,17 @@ import 'package:flutter_clean_architecture/src/feature/post/domain/repositories/
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
 
-import '../../mock/post_remote_data_source_mock.dart';
+import '../../mock/post_data_source_mock.dart';
 
 void main() {
   late PostRemoteDataSource remoteDataSource;
+  late PostLocalDataSource localDataSource;
   late PostRepository postRepositoryImpl;
 
   setUp(() {
     remoteDataSource = MockPostRemoteDataSource();
-    postRepositoryImpl = PostRepositoryImpl(remoteDataSource);
+    localDataSource = MockPostLocalDataSource();
+    postRepositoryImpl = PostRepositoryImpl(remoteDataSource, localDataSource);
   });
 
   const tPostModel = PostModel(

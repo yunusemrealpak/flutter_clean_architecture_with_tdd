@@ -5,4 +5,8 @@ abstract interface class PostRepository {
   EitherFuture<List<PostEntity>> getAll();
   EitherFuture<PostEntity> getById(int id);
   Future<PostEntity> createPost(PostEntity post);
+
+  /// Local database
+  Future<List<PostEntity>> getSavedAllPosts();
+  Future<void> savePostsToLocal(List<PostEntity> posts);
 }
