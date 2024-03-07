@@ -1,7 +1,7 @@
 import 'package:dartz/dartz.dart';
-import 'package:flutter_clean_architecture/feature/auth/domain/entities/user_entity.dart';
-import 'package:flutter_clean_architecture/feature/auth/domain/repositories/auth_repository.dart';
-import 'package:flutter_clean_architecture/feature/auth/domain/usecases/get_saved_user.dart';
+import 'package:flutter_clean_architecture/src/feature/auth/domain/entities/user_entity.dart';
+import 'package:flutter_clean_architecture/src/feature/auth/domain/repositories/auth_repository.dart';
+import 'package:flutter_clean_architecture/src/feature/auth/domain/usecases/get_saved_user.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
 

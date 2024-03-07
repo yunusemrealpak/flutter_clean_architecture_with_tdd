@@ -1,5 +1,5 @@
-import 'package:flutter_clean_architecture/feature/post/data/model/post_model.dart';
-import 'package:flutter_clean_architecture/feature/post/domain/entities/post_entity.dart';
+import 'package:flutter_clean_architecture/src/feature/post/data/model/post_model.dart';
+import 'package:flutter_clean_architecture/src/feature/post/domain/entities/post_entity.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 import '../../../../helpers/json_reader.dart';

@@ -4,7 +4,7 @@ library;
 import 'dart:convert';
 import 'dart:io';
 
-import 'package:flutter_clean_architecture/core/utils/typedef.dart';
+import 'package:flutter_clean_architecture/src/common/utils/typedef.dart';
 
 class JsonReader {
   static DataMap readJson(String path) {

@@ -1,7 +1,7 @@
 import 'package:dio/dio.dart';
-import 'package:flutter_clean_architecture/core/utils/typedef.dart';
-import 'package:flutter_clean_architecture/feature/post/data/data_sources/remote/post_remote_data_source.dart';
-import 'package:flutter_clean_architecture/feature/post/data/model/post_model.dart';
+import 'package:flutter_clean_architecture/src/common/utils/typedef.dart';
+import 'package:flutter_clean_architecture/src/feature/post/data/data_sources/remote/post_remote_data_source.dart';
+import 'package:flutter_clean_architecture/src/feature/post/data/model/post_model.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
 

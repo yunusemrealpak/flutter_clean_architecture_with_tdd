@@ -1,14 +1,14 @@
 import 'dart:convert';
 
 import 'package:dio/dio.dart';
+import 'package:flutter_clean_architecture/src/common/error/failure.dart';
+import 'package:flutter_clean_architecture/src/common/network/api_response_model.dart';
+import 'package:flutter_clean_architecture/src/feature/auth/data/data_sources/remote/auth_remote_data_source.dart';
+import 'package:flutter_clean_architecture/src/feature/auth/data/models/user_model.dart';
+import 'package:flutter_clean_architecture/src/feature/auth/domain/entities/params/sign_in_with_email_and_password_params.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
 import 'package:retrofit/dio.dart';
-import 'package:flutter_clean_architecture/core/error/failure.dart';
-import 'package:flutter_clean_architecture/core/network/api_response_model.dart';
-import 'package:flutter_clean_architecture/feature/auth/data/data_sources/remote/auth_remote_data_source.dart';
-import 'package:flutter_clean_architecture/feature/auth/data/models/user_model.dart';
-import 'package:flutter_clean_architecture/feature/auth/domain/entities/params/sign_in_with_email_and_password_params.dart';
 
 import '../../mock/mock_auth_rest_client.dart';
 

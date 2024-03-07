@@ -1,6 +1,6 @@
+import 'package:flutter_clean_architecture/src/feature/auth/data/models/user_model.dart';
+import 'package:flutter_clean_architecture/src/feature/auth/domain/entities/user_entity.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:flutter_clean_architecture/feature/auth/data/models/user_model.dart';
-import 'package:flutter_clean_architecture/feature/auth/domain/entities/user_entity.dart';
 
 import '../../../../helpers/json_reader.dart';
 

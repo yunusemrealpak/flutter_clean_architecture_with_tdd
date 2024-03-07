@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_clean_architecture/feature/post/presentation/pages/post_list_view.dart';
-import 'package:flutter_clean_architecture/injectable/injection_container.dart';
+import 'package:flutter_clean_architecture/src/feature/post/presentation/pages/post_list_view.dart';
+import 'package:flutter_clean_architecture/src/injectable/injection_container.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();

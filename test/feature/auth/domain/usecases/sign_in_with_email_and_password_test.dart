@@ -1,8 +1,8 @@
 import 'package:dartz/dartz.dart';
-import 'package:flutter_clean_architecture/feature/auth/domain/entities/params/sign_in_with_email_and_password_params.dart';
-import 'package:flutter_clean_architecture/feature/auth/domain/entities/user_entity.dart';
-import 'package:flutter_clean_architecture/feature/auth/domain/repositories/auth_repository.dart';
-import 'package:flutter_clean_architecture/feature/auth/domain/usecases/sign_in_with_email_and_password.dart';
+import 'package:flutter_clean_architecture/src/feature/auth/domain/entities/params/sign_in_with_email_and_password_params.dart';
+import 'package:flutter_clean_architecture/src/feature/auth/domain/entities/user_entity.dart';
+import 'package:flutter_clean_architecture/src/feature/auth/domain/repositories/auth_repository.dart';
+import 'package:flutter_clean_architecture/src/feature/auth/domain/usecases/sign_in_with_email_and_password.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
 
