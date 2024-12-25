@@ -1,0 +1,11 @@
+{
+    "appTitle": "Flutter Clean Architecture",
+    "welcome": "Welcome",
+    "posts": "Posts",
+    "loading": "Loading...",
+    "error": "Error",
+    "retry": "Retry",
+    "@appTitle": {
+        "description": "The title of the application"
+    }
+} 

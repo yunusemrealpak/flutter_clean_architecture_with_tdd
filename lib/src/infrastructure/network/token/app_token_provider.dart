@@ -1,6 +1,9 @@
+import 'package:injectable/injectable.dart';
+
 import '../../../core/network/token/token_provider.dart';
 
-class MyTokenProvider implements ITokenProvider {
+@Injectable(as: ITokenProvider)
+class AppTokenProvider implements ITokenProvider {
   @override
   Future<String?> getToken() async {
     // Proje özelinde, token'ı local storage / secure storage'dan çekin

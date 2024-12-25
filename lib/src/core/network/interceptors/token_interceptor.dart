@@ -1,6 +1,6 @@
 import 'package:dio/dio.dart';
 
-import '../dio_config.dart';
+import '../dio_client_config.dart';
 
 class TokenInterceptor extends Interceptor {
   final DioClientConfig config;

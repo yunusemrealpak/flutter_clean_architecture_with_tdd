@@ -3,7 +3,7 @@ import 'package:flutter_clean_architecture/src/feature/post/domain/usecases/get_
 import 'package:flutter_clean_architecture/src/feature/post/domain/usecases/get_saved_all_posts.dart';
 import 'package:flutter_clean_architecture/src/infrastructure/core/extensions/dartz_extensions.dart';
 
-import '../../../../injectable/injection_container.dart';
+import '../../../../infrastructure/di/injection_container.dart';
 
 class PostListView extends StatefulWidget {
   const PostListView({super.key});

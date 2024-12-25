@@ -1,10 +1,12 @@
 import 'package:dio/dio.dart';
+import 'package:injectable/injectable.dart';
 
 import '../cache/network_cache_manager.dart';
 
 /// Header'dan "cache-control" veya özel bir header bilgisi (örneğin "x-cacheable")
 /// alarak response'u cache'leyip, sonraki isteklerde cache'ten dönen cevabı
 /// kullanabilirsiniz. Burada basit bir örnek gösteriyoruz.
+@injectable
 class CacheInterceptor extends Interceptor {
   final INetworkCacheManager _cacheManager;
 
