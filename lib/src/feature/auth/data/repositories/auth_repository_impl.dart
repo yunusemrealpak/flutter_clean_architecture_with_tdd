@@ -1,10 +1,8 @@
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
-import 'package:flutter_clean_architecture/src/common/error/failure.dart';
 import 'package:flutter_clean_architecture/src/common/network/response_error_handler.dart';
 import 'package:flutter_clean_architecture/src/common/utils/typedef.dart';
 import 'package:flutter_clean_architecture/src/feature/auth/data/data_sources/remote/auth_remote_data_source.dart';
-import 'package:flutter_clean_architecture/src/feature/auth/data/models/user_model.dart';
 import 'package:flutter_clean_architecture/src/feature/auth/domain/entities/user_entity.dart';
 import 'package:flutter_clean_architecture/src/feature/auth/domain/repositories/auth_repository.dart';
 import 'package:injectable/injectable.dart';
@@ -22,13 +20,13 @@ class AuthRepositoryImpl implements AuthRepository {
     try {
       final response = await _authRemoteDataSource.signInWithEmailAndPassword(params);
 
-      final responseModel = response.data.convertEntity<UserModel, UserModel>(const UserModel());
+      // final responseModel = response.data.convertEntity<UserModel, UserModel>(const UserModel());
 
-      if (responseModel.success == false || responseModel.entity == null) {
-        return Left(DataFailure(message: responseModel.message ?? 'Bir hata oluştu'));
-      }
+      // if (responseModel.success == false || responseModel.entity == null) {
+      //   return Left(DataFailure(message: responseModel.message ?? 'Bir hata oluştu'));
+      // }
 
-      return Right(responseModel.entity as UserEntity);
+      return const Right(UserEntity());
     } on DioException catch (e) {
       return Left(ResponseErrorHandler.getFailure(e.response?.statusCode));
     }
