@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_clean_architecture/src/core/extensions/dartz_extensions.dart';
 import 'package:flutter_clean_architecture/src/feature/post/domain/usecases/get_by_id.dart';
 import 'package:flutter_clean_architecture/src/feature/post/domain/usecases/get_saved_all_posts.dart';
+import 'package:flutter_clean_architecture/src/infrastructure/core/extensions/dartz_extensions.dart';
 
 import '../../../../injectable/injection_container.dart';
 

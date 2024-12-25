@@ -1,7 +1,7 @@
 import 'package:dartz/dartz.dart';
 import 'package:flutter_clean_architecture/src/common/repository/entity.dart';
 import 'package:flutter_clean_architecture/src/common/repository/generic_repository_method_type.dart';
-import 'package:flutter_clean_architecture/src/core/extensions/map_extensions.dart';
+import 'package:flutter_clean_architecture/src/infrastructure/core/extensions/map_extensions.dart';
 
 import '../utils/typedef.dart';
 import 'generic_repository.dart';

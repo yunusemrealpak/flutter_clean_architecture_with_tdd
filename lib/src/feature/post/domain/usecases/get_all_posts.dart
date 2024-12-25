@@ -1,9 +1,9 @@
 import 'package:dartz/dartz.dart';
 import 'package:flutter_clean_architecture/src/common/usecases/usecase.dart';
 import 'package:flutter_clean_architecture/src/common/utils/typedef.dart';
-import 'package:flutter_clean_architecture/src/core/extensions/dartz_extensions.dart';
 import 'package:flutter_clean_architecture/src/feature/post/domain/entities/post_entity.dart';
 import 'package:flutter_clean_architecture/src/feature/post/domain/repositories/post_repository.dart';
+import 'package:flutter_clean_architecture/src/infrastructure/core/extensions/dartz_extensions.dart';
 import 'package:injectable/injectable.dart';
 
 @injectable
