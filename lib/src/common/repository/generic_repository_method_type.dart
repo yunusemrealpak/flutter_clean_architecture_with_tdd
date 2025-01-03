@@ -1,4 +1,0 @@
-enum GenericRepositoryMethod {
-  getAll,
-  getById,
-}

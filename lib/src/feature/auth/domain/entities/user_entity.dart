@@ -1,7 +1,6 @@
 import 'package:equatable/equatable.dart';
-import 'package:flutter_clean_architecture/src/common/repository/entity.dart';
 
-class UserEntity extends Equatable implements Entity {
+class UserEntity extends Equatable {
   final int? id;
   final String? email;
   final String? name;

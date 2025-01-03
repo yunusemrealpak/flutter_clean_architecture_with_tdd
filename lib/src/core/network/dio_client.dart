@@ -4,6 +4,8 @@ import 'package:injectable/injectable.dart';
 
 import 'dio_client_config.dart';
 import 'encryption/encryption_service.dart';
+import 'error/error_handler.dart';
+import 'error/network_error.dart';
 import 'interceptors/cache_interceptor.dart';
 import 'interceptors/encryption_interceptor.dart';
 import 'interceptors/log_interceptor.dart';
@@ -68,8 +70,12 @@ class DioClient {
     Map<String, dynamic>? queryParameters,
     T Function(Map<String, dynamic>)? fromJson,
   }) async {
-    final response = await _dio.get(path, queryParameters: queryParameters);
-    return _parseResponse<T>(response, fromJson);
+    try {
+      final response = await _dio.get(path, queryParameters: queryParameters);
+      return _parseResponse<T>(response, fromJson);
+    } catch (error) {
+      throw NetworkErrorHandler.handleError(error);
+    }
   }
 
   Future<T> post<T>(
@@ -77,8 +83,12 @@ class DioClient {
     dynamic data,
     T Function(Map<String, dynamic>)? fromJson,
   }) async {
-    final response = await _dio.post(path, data: data);
-    return _parseResponse<T>(response, fromJson);
+    try {
+      final response = await _dio.post(path, data: data);
+      return _parseResponse<T>(response, fromJson);
+    } catch (error) {
+      throw NetworkErrorHandler.handleError(error);
+    }
   }
 
   Future<T> put<T>(
@@ -86,8 +96,12 @@ class DioClient {
     dynamic data,
     T Function(Map<String, dynamic>)? fromJson,
   }) async {
-    final response = await _dio.put(path, data: data);
-    return _parseResponse<T>(response, fromJson);
+    try {
+      final response = await _dio.put(path, data: data);
+      return _parseResponse<T>(response, fromJson);
+    } catch (error) {
+      throw NetworkErrorHandler.handleError(error);
+    }
   }
 
   Future<T> delete<T>(
@@ -95,19 +109,31 @@ class DioClient {
     dynamic data,
     T Function(Map<String, dynamic>)? fromJson,
   }) async {
-    final response = await _dio.delete(path, data: data);
-    return _parseResponse<T>(response, fromJson);
+    try {
+      final response = await _dio.delete(path, data: data);
+      return _parseResponse<T>(response, fromJson);
+    } catch (error) {
+      throw NetworkErrorHandler.handleError(error);
+    }
   }
 
   /// Ortak parse fonksiyonu
   T _parseResponse<T>(Response response, T Function(Map<String, dynamic>)? fromJson) {
-    if (fromJson == null) {
-      // fromJson verilmediyse, direkt response.data dönebilirsiniz
-      // veya asMap() vs. yapabilirsiniz. Proje ihtiyacına göre düzenlenir.
-      return response.data as T;
-    } else {
-      // JSON parse işlemi
-      return fromJson(response.data as Map<String, dynamic>);
+    try {
+      if (fromJson == null) {
+        return response.data as T;
+      } else {
+        if (response.data is! Map<String, dynamic>) {
+          throw ServerError(
+            message: 'Geçersiz yanıt formatı',
+            statusCode: response.statusCode,
+            error: response.data,
+          );
+        }
+        return fromJson(response.data as Map<String, dynamic>);
+      }
+    } catch (error) {
+      throw NetworkErrorHandler.handleError(error);
     }
   }
 }

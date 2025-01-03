@@ -1,12 +1,12 @@
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
-import 'package:flutter_clean_architecture/src/common/network/response_error_handler.dart';
-import 'package:flutter_clean_architecture/src/common/utils/typedef.dart';
 import 'package:flutter_clean_architecture/src/feature/auth/data/data_sources/remote/auth_remote_data_source.dart';
 import 'package:flutter_clean_architecture/src/feature/auth/domain/entities/user_entity.dart';
 import 'package:flutter_clean_architecture/src/feature/auth/domain/repositories/auth_repository.dart';
+import 'package:flutter_clean_architecture/src/infrastructure/common/utils/typedef.dart';
 import 'package:injectable/injectable.dart';
 
+import '../../../../core/network/error/error_handler.dart';
 import '../../domain/entities/params/sign_in_with_email_and_password_params.dart';
 
 @LazySingleton(as: AuthRepository)
@@ -26,9 +26,9 @@ class AuthRepositoryImpl implements AuthRepository {
       //   return Left(DataFailure(message: responseModel.message ?? 'Bir hata oluştu'));
       // }
 
-      return const Right(UserEntity());
+      return Right(response.toEntity());
     } on DioException catch (e) {
-      return Left(ResponseErrorHandler.getFailure(e.response?.statusCode));
+      return Left(NetworkErrorHandler.handleError(e));
     }
   }
 

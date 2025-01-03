@@ -2,7 +2,7 @@ import 'package:isar/isar.dart';
 
 part 'network_cache_item.g.dart';
 
-@Collection()
+@collection
 class NetworkCacheItem {
   Id id = Isar.autoIncrement;
 
