@@ -1,9 +1,12 @@
 import 'package:dio/dio.dart';
-import 'package:flutter_clean_architecture/src/core/network/dio_client_config.dart';
-import 'package:flutter_clean_architecture/src/core/network/token/token_provider.dart';
-import 'package:flutter_clean_architecture/src/infrastructure/config/network/network_configuration.dart';
-import 'package:flutter_clean_architecture/src/infrastructure/di/injection_container.dart';
 import 'package:injectable/injectable.dart';
+import 'package:internet_connection_checker/internet_connection_checker.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+
+import '../../core/network/dio_client_config.dart';
+import '../../core/network/token/token_provider.dart';
+import '../config/network/network_configuration.dart';
+import 'injection_container.dart';
 
 @module
 abstract class InjectionModule {
@@ -34,4 +37,10 @@ abstract class InjectionModule {
       },
     );
   }
+
+  @lazySingleton
+  InternetConnectionChecker get connectionChecker => InternetConnectionChecker();
+
+  @preResolve
+  Future<SharedPreferences> get sharedPreferences => SharedPreferences.getInstance();
 }

@@ -1,12 +1,4 @@
-import 'package:isar/isar.dart';
-
-part 'network_cache_item.g.dart';
-
-@collection
 class NetworkCacheItem {
-  Id id = Isar.autoIncrement;
-
-  @Index(unique: true)
   late String key;
 
   late String responseData;
@@ -14,7 +6,6 @@ class NetworkCacheItem {
   late int statusCode;
   String? statusMessage;
   late String requestOptions;
-  @Index()
   late DateTime timestamp;
   late int maxAge;
 

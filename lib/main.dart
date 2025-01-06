@@ -1,16 +1,24 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_clean_architecture/src/feature/home/presentation/pages/home_page.dart';
-import 'package:flutter_clean_architecture/src/feature/home/presentation/providers/locale_provider.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_clean_architecture/src/infrastructure/config/localization/locale_provider.dart';
 import 'package:flutter_clean_architecture/src/infrastructure/core/application_init.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:provider/provider.dart';
 
+import 'src/features/app/presentation/bloc/app_bloc.dart';
+import 'src/infrastructure/router/app_router.dart';
+
+final appRouter = AppRouter();
+
 void main() async {
   await ApplicationInit.init();
   runApp(
-    ChangeNotifierProvider(
-      create: (_) => LocaleProvider(),
+    MultiProvider(
+      providers: [
+        ChangeNotifierProvider(create: (_) => LocaleProvider()),
+        BlocProvider(create: (_) => AppBloc()..add(const AppInitialize())),
+      ],
       child: const MyApp(),
     ),
   );
@@ -23,7 +31,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return Consumer<LocaleProvider>(
       builder: (context, localeProvider, _) {
-        return MaterialApp(
+        return MaterialApp.router(
           title: 'Flutter Clean Architecture',
           theme: ThemeData(
             primarySwatch: Colors.blue,
@@ -41,7 +49,7 @@ class MyApp extends StatelessWidget {
             Locale('tr'),
             Locale('ar'),
           ],
-          home: const HomePage(),
+          routerConfig: appRouter.config(),
         );
       },
     );

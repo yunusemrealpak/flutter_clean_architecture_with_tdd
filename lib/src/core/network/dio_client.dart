@@ -1,12 +1,10 @@
 import 'package:dio/dio.dart';
-import 'package:flutter_clean_architecture/src/infrastructure/di/injection_container.dart';
 import 'package:injectable/injectable.dart';
 
 import 'dio_client_config.dart';
 import 'encryption/encryption_service.dart';
 import 'error/error_handler.dart';
 import 'error/network_error.dart';
-import 'interceptors/cache_interceptor.dart';
 import 'interceptors/encryption_interceptor.dart';
 import 'interceptors/log_interceptor.dart';
 import 'interceptors/token_interceptor.dart';
@@ -27,9 +25,9 @@ class DioClient {
     if (_config.enableLogging) {
       _dio.interceptors.add(CustomLogInterceptor());
     }
-    if (_config.enableCaching) {
-      _dio.interceptors.add(di<CacheInterceptor>());
-    }
+    // if (_config.enableCaching) {
+    //   _dio.interceptors.add(di<CacheInterceptor>());
+    // }
 
     if (_config.enableEncryption &&
         _config.encryptionKeyBase64 != null &&
