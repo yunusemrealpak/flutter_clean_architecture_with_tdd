@@ -1,6 +1,6 @@
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
-import 'package:flutter_clean_architecture/src/features/auth/data/data_sources/remote/auth_remote_data_source.dart';
+import 'package:flutter_clean_architecture/src/features/auth/data/datasources/remote/auth_remote_data_source.dart';
 import 'package:flutter_clean_architecture/src/features/auth/domain/entities/user_entity.dart';
 import 'package:flutter_clean_architecture/src/features/auth/domain/repositories/auth_repository.dart';
 import 'package:flutter_clean_architecture/src/infrastructure/common/utils/typedef.dart';

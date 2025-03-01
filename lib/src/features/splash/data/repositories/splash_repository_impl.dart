@@ -26,7 +26,7 @@ class SplashRepositoryImpl implements SplashRepository {
     if (await networkInfo.isConnected) {
       try {
         final remoteVersion = await remoteDataSource.checkAppVersion();
-        return Right(remoteVersion);
+        return Right(remoteVersion.toEntity());
       } on ServerException {
         return Left(ServerFailure());
       }

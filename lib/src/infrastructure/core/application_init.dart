@@ -8,6 +8,6 @@ class ApplicationInit {
   }
 
   static Future<void> _initDependencies() async {
-    InjectionContainer.configureDependencies();
+    await InjectionContainer.configureDependencies();
   }
 }
